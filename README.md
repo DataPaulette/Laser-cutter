@@ -1,3 +1,5 @@
-# Laser-cutter electronic for Arduino
+# Laser-cutter
+## Electronic for Arduino & GRBL
 
-Voir la page sur le wiki : http://wiki.datapaulette.org/doku.php/atelier/documentation/outillage/laser
+GRBL : https://github.com/gnea/grbl
+DataPaulette wiki page : http://wiki.datapaulette.org/doku.php/atelier/documentation/outillage/laser
