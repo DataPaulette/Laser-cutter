@@ -1797,9 +1797,10 @@ Based on the following sources:
 <variantdefs>
 </variantdefs>
 <classes>
-<class number="0" name="default" width="0" drill="0">
+<class number="0" name="default" width="0.0254" drill="0.8">
+<clearance class="0" value="0.0254"/>
 </class>
-<class number="2" name="gnd_plane" width="2" drill="0.8">
+<class number="2" name="VCC_24" width="1" drill="0.8">
 <clearance class="2" value="0.0254"/>
 </class>
 </classes>
@@ -1818,10 +1819,12 @@ Based on the following sources:
 <part name="X2_END_SIG" library="con-amp-mt" deviceset="L03P" device=""/>
 <part name="X1_END_SIG" library="con-amp-mt" deviceset="L03P" device=""/>
 <part name="IC1" library="74xx-eu" deviceset="74*08" device="N" technology="AC"/>
-<part name="PROBE*" library="con-amp-mt" deviceset="L03P" device=""/>
+<part name="PROBE" library="con-amp-mt" deviceset="L03P" device=""/>
 <part name="Y1_END_SIG1" library="con-amp-mt" deviceset="L03P" device=""/>
 <part name="Y2_END_SIG2" library="con-amp-mt" deviceset="L03P" device=""/>
 <part name="MOTOR_Z" library="con-amp-mt" deviceset="L04P" device=""/>
+<part name="FEED_H" library="con-amp-mt" deviceset="L02P" device=""/>
+<part name="CYCLE_S" library="con-amp-mt" deviceset="L02P" device=""/>
 </parts>
 <sheets>
 <sheet>
@@ -1861,9 +1864,9 @@ Based on the following sources:
 <instance part="IC1" gate="B" x="-20.32" y="30.48"/>
 <instance part="IC1" gate="C" x="-20.32" y="12.7"/>
 <instance part="IC1" gate="D" x="-20.32" y="-5.08"/>
-<instance part="PROBE*" gate="-1" x="63.5" y="-2.54" rot="R180"/>
-<instance part="PROBE*" gate="-2" x="63.5" y="0" rot="R180"/>
-<instance part="PROBE*" gate="-3" x="63.5" y="2.54" rot="R180"/>
+<instance part="PROBE" gate="-1" x="63.5" y="-2.54" rot="R180"/>
+<instance part="PROBE" gate="-2" x="63.5" y="0" rot="R180"/>
+<instance part="PROBE" gate="-3" x="63.5" y="2.54" rot="R180"/>
 <instance part="Y1_END_SIG1" gate="-1" x="63.5" y="91.44" rot="R180"/>
 <instance part="Y1_END_SIG1" gate="-2" x="63.5" y="88.9" rot="R180"/>
 <instance part="Y1_END_SIG1" gate="-3" x="63.5" y="86.36" rot="R180"/>
@@ -1874,6 +1877,10 @@ Based on the following sources:
 <instance part="MOTOR_Z" gate="-2" x="63.5" y="35.56" rot="R180"/>
 <instance part="MOTOR_Z" gate="-3" x="63.5" y="38.1" rot="R180"/>
 <instance part="MOTOR_Z" gate="-4" x="63.5" y="40.64" rot="R180"/>
+<instance part="FEED_H" gate="-1" x="63.5" y="-17.78" rot="R180"/>
+<instance part="FEED_H" gate="-2" x="63.5" y="-15.24" rot="R180"/>
+<instance part="CYCLE_S" gate="-1" x="63.5" y="-25.4" rot="R180"/>
+<instance part="CYCLE_S" gate="-2" x="63.5" y="-22.86" rot="R180"/>
 </instances>
 <busses>
 </busses>
@@ -1968,7 +1975,7 @@ Based on the following sources:
 </segment>
 <segment>
 <wire x1="58.42" y1="-2.54" x2="50.8" y2="-2.54" width="0.1524" layer="91"/>
-<pinref part="PROBE*" gate="-1" pin="S"/>
+<pinref part="PROBE" gate="-1" pin="S"/>
 <junction x="58.42" y="-2.54"/>
 <label x="38.1" y="-2.54" size="1.778" layer="95"/>
 </segment>
@@ -1977,6 +1984,18 @@ Based on the following sources:
 <wire x1="58.42" y1="33.02" x2="50.8" y2="33.02" width="0.1524" layer="91"/>
 <label x="38.1" y="33.02" size="1.778" layer="95"/>
 <junction x="58.42" y="33.02"/>
+</segment>
+<segment>
+<pinref part="FEED_H" gate="-1" pin="S"/>
+<wire x1="58.42" y1="-17.78" x2="50.8" y2="-17.78" width="0.1524" layer="91"/>
+<label x="38.1" y="-17.78" size="1.778" layer="95"/>
+<junction x="58.42" y="-17.78"/>
+</segment>
+<segment>
+<pinref part="CYCLE_S" gate="-1" pin="S"/>
+<wire x1="58.42" y1="-25.4" x2="50.8" y2="-25.4" width="0.1524" layer="91"/>
+<label x="38.1" y="-25.4" size="1.778" layer="95"/>
+<junction x="58.42" y="-25.4"/>
 </segment>
 </net>
 <net name="X_STEP" class="0">
@@ -2050,6 +2069,12 @@ Based on the following sources:
 <wire x1="137.16" y1="43.18" x2="132.08" y2="43.18" width="0.1524" layer="91"/>
 <label x="114.3" y="43.18" size="1.778" layer="95"/>
 </segment>
+<segment>
+<wire x1="58.42" y1="0" x2="50.8" y2="0" width="0.1524" layer="91"/>
+<pinref part="PROBE" gate="-2" pin="S"/>
+<junction x="58.42" y="0"/>
+<label x="38.1" y="0" size="1.778" layer="95"/>
+</segment>
 </net>
 <net name="NC" class="0">
 <segment>
@@ -2058,7 +2083,7 @@ Based on the following sources:
 <label x="114.3" y="45.72" size="1.778" layer="95"/>
 </segment>
 </net>
-<net name="VCC_24" class="0">
+<net name="VCC_24" class="2">
 <segment>
 <wire x1="58.42" y1="124.46" x2="50.8" y2="124.46" width="0.1524" layer="91"/>
 <label x="38.1" y="124.46" size="1.778" layer="95"/>
@@ -2105,7 +2130,7 @@ Based on the following sources:
 </segment>
 <segment>
 <wire x1="58.42" y1="2.54" x2="50.8" y2="2.54" width="0.1524" layer="91"/>
-<pinref part="PROBE*" gate="-3" pin="S"/>
+<pinref part="PROBE" gate="-3" pin="S"/>
 <junction x="58.42" y="2.54"/>
 <label x="38.1" y="2.54" size="1.778" layer="95"/>
 </segment>
@@ -2129,12 +2154,11 @@ Based on the following sources:
 <wire x1="137.16" y1="53.34" x2="132.08" y2="53.34" width="0.1524" layer="91"/>
 <label x="114.3" y="53.34" size="1.778" layer="95"/>
 </segment>
-</net>
-<net name="CYCLE-START*" class="0">
 <segment>
-<pinref part="U1" gate="G$1" pin="A2"/>
-<wire x1="137.16" y1="50.8" x2="132.08" y2="50.8" width="0.1524" layer="91"/>
-<label x="114.3" y="50.8" size="1.778" layer="95"/>
+<pinref part="FEED_H" gate="-2" pin="S"/>
+<wire x1="58.42" y1="-15.24" x2="50.8" y2="-15.24" width="0.1524" layer="91"/>
+<label x="38.1" y="-15.24" size="1.778" layer="95"/>
+<junction x="58.42" y="-15.24"/>
 </segment>
 </net>
 <net name="COOLANT_EN" class="0">
@@ -2358,12 +2382,17 @@ Based on the following sources:
 <junction x="58.42" y="35.56"/>
 </segment>
 </net>
-<net name="PROB*" class="0">
+<net name="CYCLE_START*" class="0">
 <segment>
-<wire x1="58.42" y1="0" x2="50.8" y2="0" width="0.1524" layer="91"/>
-<pinref part="PROBE*" gate="-2" pin="S"/>
-<junction x="58.42" y="0"/>
-<label x="38.1" y="0" size="1.778" layer="95"/>
+<pinref part="CYCLE_S" gate="-2" pin="S"/>
+<wire x1="58.42" y1="-22.86" x2="50.8" y2="-22.86" width="0.1524" layer="91"/>
+<label x="38.1" y="-22.86" size="1.778" layer="95"/>
+<junction x="58.42" y="-22.86"/>
+</segment>
+<segment>
+<pinref part="U1" gate="G$1" pin="A2"/>
+<wire x1="137.16" y1="50.8" x2="132.08" y2="50.8" width="0.1524" layer="91"/>
+<label x="114.3" y="50.8" size="1.778" layer="95"/>
 </segment>
 </net>
 </nets>
